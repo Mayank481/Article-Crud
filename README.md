@@ -76,7 +76,7 @@ Step to use Api:- In the APi's we are using the Authentication using JWT, So fir
 
 # Note :- Please passed the sourceVerification in the headers for secure the api's from thread.
 ```
-Quokka_Labs
+x-request-source = Quokka_Labs
 ```
 
 ## API ENDPOINTS
