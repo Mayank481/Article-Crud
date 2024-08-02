@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const logger = require("../logger/logger");
 
-const registerschema = Joi.object({
+const registerSchema = Joi.object({
   firstName: Joi.string().alphanum().min(3).max(30).required(),
   lastName: Joi.string().alphanum().min(3).max(30).required(),
   email: Joi.string().email().required(),
@@ -22,6 +22,16 @@ const loginSchema = Joi.object({
   password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
 });
 
+const createArticle = Joi.object({
+  title: Joi.string().alphanum().min(3).max(30).required(),
+  content: Joi.string().required(),
+});
+
+const updateArticle = Joi.object({
+  title: Joi.string().alphanum().min(3).max(30).required(),
+  content: Joi.string().required(),
+});
+
 const validateRequest = (schema) => {
   return (req, res, next) => {
     const { error } = schema.validate(req.body);
@@ -34,6 +44,8 @@ const validateRequest = (schema) => {
 };
 
 module.exports = {
-  validateRegister: validateRequest(registerschema),
+  validateRegister: validateRequest(registerSchema),
   validateLogin: validateRequest(loginSchema),
+  validateCreateArticle: validateRequest(createArticle),
+  validateUpdateArticle: validateRequest(updateArticle),
 };
