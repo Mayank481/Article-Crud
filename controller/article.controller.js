@@ -72,9 +72,9 @@ module.exports.deleteArticle = async (req, res) => {
         message: "Unauthorized",
       });
     }
-    logger.info("User Deleted Successfully :(");
+    logger.info("Article Deleted Successfully :(");
     res.status(200).json({
-      message: "User Deleted Successfully :(",
+      message: "Article Deleted Successfully :(",
       data: result,
     });
   } catch (error) {

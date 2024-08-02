@@ -1,6 +1,5 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
 const logger = require("../logger/logger");
 
 module.exports.authMiddleware = async (req, res, next) => {
