@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 4000;
 const logger = require("./logger/logger");
 
 const connectDatabase = require("./config/database");
+const { sourceVerification } = require("./middleware/sourceVerification.middleware");
 
 connectDatabase();
 
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/v1", require("./routes"));
+app.use("/api/v1", sourceVerification,require("./routes"));
 
 app.listen(PORT, () => {
   logger.info(`Server is running on http://localhost:${PORT}`);
